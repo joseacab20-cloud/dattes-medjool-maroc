@@ -14,7 +14,7 @@ SITE = "https://medjooldateswholesale.vercel.app"  # production domain (no trail
 LANGS = ["en", "fr", "es"]          # first = default language, served at /
 PATHS = {"en": "/", "fr": "/fr/", "es": "/es/"}
 LASTMOD = "2026-10-28"
-WA_NUMBER = "212661111111"
+WA_NUMBER = "212664738219"
 FAQ_COUNT = 7
 
 T = json.loads((ROOT / "tools/translations.json").read_text(encoding="utf-8"))
@@ -45,10 +45,10 @@ ORG = {
             "url": SITE + "/",
             "logo": SITE + "/images/apple-touch-icon.png",
             "image": SITE + "/images/og-image.jpg",
-            "telephone": "+212661111111",
+            "telephone": "+212664738219",
             "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+212661111111",
+                "telephone": "+212664738219",
                 "contactType": "sales",
                 "url": "https://wa.me/" + WA_NUMBER,
                 "availableLanguage": ["English", "French", "Spanish"],
