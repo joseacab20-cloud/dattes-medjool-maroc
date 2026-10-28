@@ -6,7 +6,7 @@ Usage (from the project folder):  python3 tools/build.py
 import json, html, re, urllib.parse, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SITE = "https://dattesmedjoolmaroc.vercel.app"  # provisional domain
+SITE = "https://medjooldateswholesale.vercel.app"  # provisional domain
 WA_NUMBER = "212661111111"
 FAQ_COUNT = 7
 
