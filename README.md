@@ -1,48 +1,58 @@
-# Dattes Medjool Maroc — site one-page FR / EN / ES
+# Dattes Medjool Maroc — site one-page EN / FR / ES
 
-Site vitrine d'une seule page, optimisé SEO pour **« dattes medjool maroc »** (FR, langue par défaut),
-**« medjool dates wholesale »** (EN, marché US : wholesale / bulk medjool dates, medjool dates supplier) et **« dátiles medjool marruecos »** (ES).
+Site vitrine d'une seule page, en trois langues, chacune à sa propre adresse :
+
+| Langue | Adresse | Mot-clé SEO principal |
+|---|---|---|
+| Anglais (**par défaut**) | `https://medjooldateswholesale.vercel.app/` | « medjool dates wholesale » (marché US : wholesale / bulk medjool dates, medjool dates supplier) |
+| Français | `https://medjooldateswholesale.vercel.app/fr/` | « dattes medjool maroc » |
+| Espagnol | `https://medjooldateswholesale.vercel.app/es/` | « dátiles medjool marruecos » |
+
 Objectif : faire contacter le vendeur sur **WhatsApp** (`https://wa.me/212661111111`).
 
-- 100 % statique : HTML + CSS + JavaScript, **aucun framework, aucune installation**.
-- Trois langues avec un sélecteur **EN / FR / ES** dans l'en-tête (choix mémorisé, et `?lang=en` / `?lang=es` dans l'adresse).
-- Le français est écrit directement dans le HTML : Google peut le lire sans JavaScript.
-- Bouton WhatsApp flottant + boutons WhatsApp dans chaque section.
-- Données structurées : `Organization`, `WebSite`, `FAQPage` (la FAQ change de langue avec le site).
-- `robots.txt`, `sitemap.xml` (avec `hreflang`), favicon, image de partage (Open Graph).
+- 100 % statique : HTML + CSS + un petit JavaScript (menu mobile), **aucun framework, aucune installation**.
+- Chaque langue est une **vraie page HTML complète** (titre, description, Open Graph, `canonical`, `hreflang`,
+  FAQ JSON-LD, textes alternatifs des images, message WhatsApp pré-rempli dans la bonne langue) :
+  Google lit chaque version sans JavaScript.
+- Sélecteur **EN / FR / ES** dans l'en-tête = simples liens vers `/`, `/fr/`, `/es/`.
+  Pas de redirection automatique selon la langue du navigateur (pour que Google puisse tout explorer).
+- Anciennes adresses : `/?lang=fr` → `/fr/` et `/?lang=es` → `/es/` (redirection permanente 308, dans `vercel.json`).
+  `/?lang=en` affiche simplement la page anglaise (sa `canonical` pointe vers `/`).
+- Bouton WhatsApp flottant + boutons WhatsApp dans chaque section (12 liens par page).
+- Données structurées : `Organization`, `WebSite`, `FAQPage` (une par langue).
+- `robots.txt`, `sitemap.xml` (les 3 adresses avec leurs `hreflang`), favicon, image de partage (Open Graph).
 - **Aucun outil de suivi installé** (pas de GA4, pas de GTM, pas de pixel). Emplacements prévus pour GTM.
 
 ---
 
 ## 1. Voir le site sur votre ordinateur (aperçu local)
 
-### Méthode la plus simple (aucun logiciel)
-1. Sur la page GitHub du projet, cliquez sur le bouton vert **Code** → **Download ZIP**.
-2. Décompressez le fichier ZIP (clic droit → *Extraire tout*).
-3. Ouvrez le dossier, puis **double-cliquez sur `index.html`**. Le site s'ouvre dans votre navigateur.
-4. Testez le sélecteur **EN / FR / ES** en haut à droite et les boutons WhatsApp.
+Les pages utilisent des chemins qui commencent par `/` (ex. `/css/style.css`) pour fonctionner depuis `/fr/` et `/es/`.
+Il faut donc un petit serveur local (un double-clic sur `index.html` n'affiche pas le design).
 
-### Méthode « comme en ligne » (optionnelle, si Node.js est installé)
 ```bash
 cd dattes-medjool-maroc
-npx serve .
+python3 -m http.server 8000      # ou : npx serve .
 ```
-Puis ouvrez l'adresse affichée (en général http://localhost:3000).
-Pour tester une langue directement : http://localhost:3000/?lang=en ou http://localhost:3000/?lang=es
+Puis ouvrez http://localhost:8000/ (anglais), http://localhost:8000/fr/ et http://localhost:8000/es/.
 
 ---
 
 ## 2. Structure du projet
 
 ```
-index.html               ← la page (contenu français pré-rempli)
+index.html               ← page anglaise (générée)
+fr/index.html            ← page française (générée)
+es/index.html            ← page espagnole (générée)
 css/style.css            ← le design (couleurs or / caramel / ambre)
-js/i18n.js               ← TOUS les textes, en FR / EN / ES
-js/main.js               ← sélecteur de langue, menu mobile, liens WhatsApp
+js/main.js               ← menu mobile, ombre de l'en-tête (pas de traduction)
 images/                  ← photos optimisées (WebP) + image de partage og-image.jpg
 favicon.svg              ← icône du site
-robots.txt, sitemap.xml  ← pour Google
-tools/                   ← (optionnel) source des traductions + script de génération
+robots.txt, sitemap.xml  ← pour Google (sitemap généré)
+vercel.json              ← adresses propres (/fr/, /es/) + redirections ?lang=
+tools/translations.json  ← TOUS les textes, en EN / FR / ES
+tools/index.template.html← le modèle HTML commun aux 3 pages
+tools/build.py           ← génère les 3 pages + sitemap.xml
 ```
 
 Sections de la page : en-tête fixe avec ancres · hero · bandeau de confiance · origine (Errachidia / Tafilalet,
@@ -51,40 +61,29 @@ qualité & certifications · ce que nos clients recherchent · FAQ · appel à l
 
 ---
 
-## 3. Comment fonctionnent les traductions
+## 3. Modifier un texte
 
-Chaque texte du HTML porte une clé, par exemple :
-```html
-<h1 data-i18n="hero.title">Dattes Medjool du Maroc, …</h1>
-<img alt="…" data-i18n-attr="alt:img.hero.alt">
-```
-Le fichier `js/i18n.js` contient la même clé dans les trois langues (`fr`, `en`, `es`).
-Quand on clique sur EN / FR / ES, `js/main.js` :
-- remplace tous les textes, les `alt` des images et les `aria-label` ;
-- met à jour `<html lang>`, le `<title>`, la meta description, les balises Open Graph / Twitter et la `canonical` ;
-- régénère le JSON-LD `FAQPage` dans la bonne langue ;
-- met à jour tous les liens WhatsApp (message pré-rempli dans la langue choisie) ;
-- mémorise le choix (localStorage) et met l'adresse à jour (`?lang=en`, `?lang=es`, rien pour le français).
+1. Modifiez le texte dans `tools/translations.json` (clés `en`, `fr`, `es`).
+2. Lancez `python3 tools/build.py` : il régénère `index.html`, `fr/index.html`, `es/index.html` et `sitemap.xml`.
 
-**Modifier un texte :** le plus simple est d'éditer `tools/translations.json` puis de lancer
-`python3 tools/build.py` (régénère `index.html` et `js/i18n.js`).
-Sans Python : modifiez le texte dans `js/i18n.js` (les 3 langues) **et** le texte français dans `index.html`.
+Pour la structure de la page (sections, boutons), modifiez `tools/index.template.html` puis relancez le script.
+Ne modifiez pas directement les fichiers `index.html` générés (ils seraient écrasés au prochain build).
 
 ---
 
 ## 4. WhatsApp
 
 Tous les liens utilisent exactement `https://wa.me/212661111111` (+212 661 111 111), avec un message
-pré-rempli (`?text=…`) dans la langue courante. Chaque lien porte :
+pré-rempli (`?text=…`) dans la langue de la page. Chaque lien porte :
 ```html
 data-cta="whatsapp" data-cta-location="hero | hero-quote | header | product-premium | product-wholesale |
                                        product-boxes | why | quality | final | final-quote | footer | floating"
 ```
-Pour changer le numéro : remplacez `212661111111` dans `js/main.js`, `tools/build.py` et `index.html`.
+Pour changer le numéro : remplacez `212661111111` dans `tools/build.py` (et le texte affiché dans `tools/translations.json` si besoin), puis relancez `python3 tools/build.py`.
 
 ## 5. Ajouter Google Tag Manager plus tard
 
-Deux emplacements commentés sont prévus dans `index.html` :
+Deux emplacements commentés sont prévus dans `tools/index.template.html` (donc dans les 3 pages) :
 1. tout en haut de `<head>` → bloc « GOOGLE TAG MANAGER (HEAD) » : collez le 1er extrait `<script>` GTM ;
 2. juste après `<body>` → bloc « GOOGLE TAG MANAGER (BODY / noscript) » : collez l'extrait `<noscript>`.
 
@@ -97,10 +96,10 @@ Pensez à ajouter une bannière de consentement cookies avant d'activer un suivi
 
 ## 6. À savoir / à compléter
 
-- **Domaine prévu** : `https://medjooldateswholesale.vercel.app` (pas encore publié) (canonical, hreflang, sitemap, robots, Open Graph,
-  JSON-LD). À remplacer partout si l'adresse finale est différente.
+- **Domaine** : `https://medjooldateswholesale.vercel.app` (variable `SITE` dans `tools/build.py`, plus `robots.txt`).
+  Utilisé pour canonical, hreflang, sitemap, Open Graph et JSON-LD.
 - **Pas de témoignages inventés** : la section « Ce que nos clients recherchent » décrit des attentes générales.
-  Un modèle de témoignage est prêt en commentaire dans `index.html` (TODO) — à n'utiliser qu'avec de vrais avis.
+  Un modèle de témoignage est prêt en commentaire dans `tools/index.template.html` (TODO) — à n'utiliser qu'avec de vrais avis.
 - **Certifications** : aucune certification n'est affichée. Le texte invite les professionnels à vérifier
   ensemble les documents nécessaires. Un commentaire TODO indique où ajouter de vraies certifications.
 - **Aucun prix, volume, année ou nom d'entreprise** n'est indiqué. Nom du site neutre : « Dattes Medjool Maroc ».
@@ -120,5 +119,6 @@ Images recadrées, redimensionnées et compressées en WebP. Le favicon et l'ima
 
 ## 8. Mise en ligne
 
-Le site **n'est pas encore publié**. La mise en ligne sur Vercel se fera uniquement après validation de l'aperçu.
-(Le projet est statique : aucun réglage de build n'est nécessaire.)
+Hébergé sur Vercel (projet `medjooldateswholesale`), site statique : aucun réglage de build.
+`vercel.json` active les adresses propres avec barre finale (`/fr/`, `/es/`) et les redirections `?lang=`.
+Chaque mise en production est validée par Jose sur un aperçu (preview) avant d'être publiée.

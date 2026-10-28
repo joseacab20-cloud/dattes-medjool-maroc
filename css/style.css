@@ -50,8 +50,8 @@ p{margin:0 0 1em}
 .nav{display:none}
 .header__actions{margin-left:auto;display:flex;align-items:center;gap:.6rem}
 .lang{display:flex;border:1px solid var(--cream-2);border-radius:999px;padding:3px;background:#fff}
-.lang button{font:600 .8rem/1 var(--sans);letter-spacing:.04em;border:0;background:transparent;color:var(--muted);padding:.5rem .6rem;border-radius:999px;cursor:pointer;min-width:38px;min-height:34px}
-.lang button[aria-pressed="true"]{background:var(--espresso);color:var(--gold-soft)}
+.lang a{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;font:600 .8rem/1 var(--sans);letter-spacing:.04em;border:0;background:transparent;color:var(--muted);padding:.5rem .6rem;border-radius:999px;cursor:pointer;min-width:38px;min-height:34px}
+.lang a[aria-current="page"]{background:var(--espresso);color:var(--gold-soft)}
 .header__wa{display:none}
 .burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:0;background:transparent;cursor:pointer;padding:10px}
 .burger span{display:block;height:2px;background:var(--espresso);border-radius:2px;transition:transform .2s,opacity .2s}
@@ -189,7 +189,7 @@ p{margin:0 0 1em}
 @media (max-width:520px){
   .brand{white-space:normal;min-width:0}
   .brand span{font-size:.98rem;line-height:1.1;max-width:8.5em}
-  .lang button{min-width:34px;padding:.45rem .45rem}
+  .lang a{min-width:34px;padding:.45rem .45rem}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
