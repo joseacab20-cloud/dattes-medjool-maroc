@@ -8,7 +8,7 @@ Site vitrine d'une seule page, en trois langues, chacune à sa propre adresse :
 | Français | `https://medjooldateswholesale.vercel.app/fr/` | « dattes medjool maroc » |
 | Espagnol | `https://medjooldateswholesale.vercel.app/es/` | « dátiles medjool marruecos » |
 
-Objectif : faire contacter le vendeur sur **WhatsApp** (`https://wa.me/212661111111`).
+Objectif : faire contacter le vendeur sur **WhatsApp** (`https://wa.me/212664738219`).
 
 - 100 % statique : HTML + CSS + un petit JavaScript (menu mobile), **aucun framework, aucune installation**.
 - Chaque langue est une **vraie page HTML complète** (titre, description, Open Graph, `canonical`, `hreflang`,
@@ -73,13 +73,13 @@ Ne modifiez pas directement les fichiers `index.html` générés (ils seraient �
 
 ## 4. WhatsApp
 
-Tous les liens utilisent exactement `https://wa.me/212661111111` (+212 661 111 111), avec un message
+Tous les liens utilisent exactement `https://wa.me/212664738219` (+212 664 738 219), avec un message
 pré-rempli (`?text=…`) dans la langue de la page. Chaque lien porte :
 ```html
 data-cta="whatsapp" data-cta-location="hero | hero-quote | header | product-premium | product-wholesale |
                                        product-boxes | why | quality | final | final-quote | footer | floating"
 ```
-Pour changer le numéro : remplacez `212661111111` dans `tools/build.py` (et le texte affiché dans `tools/translations.json` si besoin), puis relancez `python3 tools/build.py`.
+Pour changer le numéro : remplacez `212664738219` dans `tools/build.py` (et le texte affiché dans `tools/translations.json` si besoin), puis relancez `python3 tools/build.py`.
 
 ## 5. Ajouter Google Tag Manager plus tard
 
