@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Provisional domain — update if the final domain changes
+Sitemap: https://dattesmedjoolmaroc.vercel.app/sitemap.xml

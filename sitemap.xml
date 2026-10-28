@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Provisional domain: https://dattesmedjoolmaroc.vercel.app — update if it changes -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://dattesmedjoolmaroc.vercel.app/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dattesmedjoolmaroc.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dattesmedjoolmaroc.vercel.app/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dattesmedjoolmaroc.vercel.app/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dattesmedjoolmaroc.vercel.app/"/>
+  </url>
+  <url>
+    <loc>https://dattesmedjoolmaroc.vercel.app/?lang=en</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dattesmedjoolmaroc.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dattesmedjoolmaroc.vercel.app/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dattesmedjoolmaroc.vercel.app/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dattesmedjoolmaroc.vercel.app/"/>
+  </url>
+  <url>
+    <loc>https://dattesmedjoolmaroc.vercel.app/?lang=es</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://dattesmedjoolmaroc.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dattesmedjoolmaroc.vercel.app/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://dattesmedjoolmaroc.vercel.app/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dattesmedjoolmaroc.vercel.app/"/>
+  </url>
+</urlset>
