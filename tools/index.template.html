@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{LANG}}">
 <head>
   <!-- ============================================================
        GOOGLE TAG MANAGER (HEAD) — à ajouter plus tard
@@ -9,38 +9,34 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="meta.title">{{meta.title}}</title>
-  <meta name="description" content="{{meta.description}}" data-i18n-attr="content:meta.description">
+  <title>{{meta.title}}</title>
+  <meta name="description" content="{{meta.description}}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#24160d">
-  <!-- NOTE: domaine provisoire — remplacez https://medjooldateswholesale.vercel.app partout s'il change -->
-  <link rel="canonical" href="https://medjooldateswholesale.vercel.app/" id="canonical">
-  <link rel="alternate" hreflang="fr" href="https://medjooldateswholesale.vercel.app/">
-  <link rel="alternate" hreflang="en" href="https://medjooldateswholesale.vercel.app/?lang=en">
-  <link rel="alternate" hreflang="es" href="https://medjooldateswholesale.vercel.app/?lang=es">
-  <link rel="alternate" hreflang="x-default" href="https://medjooldateswholesale.vercel.app/">
+  <!-- Domain is set in tools/build.py (SITE). EN = /, FR = /fr/, ES = /es/ -->
+  <link rel="canonical" href="{{CANONICAL}}">
+{{HREFLANG}}
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Dattes Medjool Maroc">
-  <meta property="og:url" content="https://medjooldateswholesale.vercel.app/" id="og-url">
-  <meta property="og:title" content="{{meta.ogTitle}}" data-i18n-attr="content:meta.ogTitle">
-  <meta property="og:description" content="{{meta.ogDescription}}" data-i18n-attr="content:meta.ogDescription">
-  <meta property="og:locale" content="{{meta.ogLocale}}" data-i18n-attr="content:meta.ogLocale">
-  <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <meta property="og:title" content="{{meta.ogTitle}}">
+  <meta property="og:description" content="{{meta.ogDescription}}">
+  <meta property="og:locale" content="{{meta.ogLocale}}">
+{{OG_ALT}}
   <meta property="og:image" content="https://medjooldateswholesale.vercel.app/images/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="{{img.hero.alt}}" data-i18n-attr="content:img.hero.alt">
+  <meta property="og:image:alt" content="{{img.hero.alt}}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{meta.ogTitle}}" data-i18n-attr="content:meta.ogTitle">
-  <meta name="twitter:description" content="{{meta.ogDescription}}" data-i18n-attr="content:meta.ogDescription">
+  <meta name="twitter:title" content="{{meta.ogTitle}}">
+  <meta name="twitter:description" content="{{meta.ogDescription}}">
   <meta name="twitter:image" content="https://medjooldateswholesale.vercel.app/images/og-image.jpg">
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="preload" as="image" href="images/dattes-medjool-maroc-800.webp" imagesrcset="images/dattes-medjool-maroc-480.webp 480w, images/dattes-medjool-maroc-800.webp 800w" imagesizes="(min-width: 900px) 42vw, 100vw" fetchpriority="high">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <link rel="preload" as="image" href="/images/dattes-medjool-maroc-800.webp" imagesrcset="/images/dattes-medjool-maroc-480.webp 480w, /images/dattes-medjool-maroc-800.webp 800w" imagesizes="(min-width: 900px) 42vw, 100vw" fetchpriority="high">
+  <link rel="stylesheet" href="/css/style.css">
 
   <script type="application/ld+json" id="ld-org">
 {{LD_ORG}}
@@ -58,30 +54,28 @@
        pour créer facilement des déclencheurs GTM (clic WhatsApp).
        ============================================================ -->
 
-  <a class="skip" href="#main" data-i18n="a11y.skip">{{a11y.skip}}</a>
+  <a class="skip" href="#main">{{a11y.skip}}</a>
 
   <header class="header" id="top">
     <div class="container header__inner">
-      <a class="brand" href="#top" aria-label="{{a11y.home}}" data-i18n-attr="aria-label:a11y.home">
-        <img src="favicon.svg" alt="" width="34" height="34">
+      <a class="brand" href="#top" aria-label="{{a11y.home}}">
+        <img src="/favicon.svg" alt="" width="34" height="34">
         <span>Dattes Medjool <strong>Maroc</strong></span>
       </a>
-      <nav class="nav" id="nav" aria-label="{{a11y.nav}}" data-i18n-attr="aria-label:a11y.nav">
-        <a href="#origine" data-i18n="nav.about">{{nav.about}}</a>
-        <a href="#produits" data-i18n="nav.products">{{nav.products}}</a>
-        <a href="#pourquoi" data-i18n="nav.why">{{nav.why}}</a>
-        <a href="#qualite" data-i18n="nav.quality">{{nav.quality}}</a>
-        <a href="#faq" data-i18n="nav.faq">{{nav.faq}}</a>
-        <a href="#contact" data-i18n="nav.contact">{{nav.contact}}</a>
+      <nav class="nav" id="nav" aria-label="{{a11y.nav}}">
+        <a href="#origine">{{nav.about}}</a>
+        <a href="#produits">{{nav.products}}</a>
+        <a href="#pourquoi">{{nav.why}}</a>
+        <a href="#qualite">{{nav.quality}}</a>
+        <a href="#faq">{{nav.faq}}</a>
+        <a href="#contact">{{nav.contact}}</a>
       </nav>
       <div class="header__actions">
-        <div class="lang" role="group" aria-label="{{a11y.lang}}" data-i18n-attr="aria-label:a11y.lang">
-          <button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button>
-          <button type="button" data-lang="fr" lang="fr" aria-pressed="true">FR</button>
-          <button type="button" data-lang="es" lang="es" aria-pressed="false">ES</button>
-        </div>
-        <a class="btn btn--wa btn--sm header__wa" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="header">{{ICON_WA}}<span data-i18n="nav.cta">{{nav.cta}}</span></a>
-        <button class="burger" type="button" aria-controls="nav" aria-expanded="false" aria-label="{{a11y.menu}}" data-i18n-attr="aria-label:a11y.menu"><span></span><span></span><span></span></button>
+        <nav class="lang" aria-label="{{a11y.lang}}">
+{{LANG_LINKS}}
+        </nav>
+        <a class="btn btn--wa btn--sm header__wa" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="header">{{ICON_WA}}<span>{{nav.cta}}</span></a>
+        <button class="burger" type="button" aria-controls="nav" aria-expanded="false" aria-label="{{a11y.menu}}"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
@@ -91,28 +85,28 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero__grid">
         <div class="hero__text">
-          <p class="eyebrow" data-i18n="hero.eyebrow">{{hero.eyebrow}}</p>
-          <h1 id="hero-title" data-i18n="hero.title">{{hero.title}}</h1>
-          <p class="lead" data-i18n="hero.lead">{{hero.lead}}</p>
+          <p class="eyebrow">{{hero.eyebrow}}</p>
+          <h1 id="hero-title">{{hero.title}}</h1>
+          <p class="lead">{{hero.lead}}</p>
           <div class="cta-row">
-            <a class="btn btn--wa" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="hero">{{ICON_WA}}<span data-i18n="hero.cta1">{{hero.cta1}}</span></a>
-            <a class="btn btn--ghost" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="hero-quote"><span data-i18n="hero.cta2">{{hero.cta2}}</span></a>
+            <a class="btn btn--wa" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="hero">{{ICON_WA}}<span>{{hero.cta1}}</span></a>
+            <a class="btn btn--ghost" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="hero-quote"><span>{{hero.cta2}}</span></a>
           </div>
-          <p class="hero__note" data-i18n="hero.note">{{hero.note}}</p>
+          <p class="hero__note">{{hero.note}}</p>
         </div>
         <figure class="hero__media">
-          <img src="images/dattes-medjool-maroc-800.webp" srcset="images/dattes-medjool-maroc-480.webp 480w, images/dattes-medjool-maroc-800.webp 800w" sizes="(min-width: 900px) 42vw, 100vw" width="800" height="1000" alt="{{img.hero.alt}}" data-i18n-attr="alt:img.hero.alt" fetchpriority="high" decoding="async">
+          <img src="/images/dattes-medjool-maroc-800.webp" srcset="/images/dattes-medjool-maroc-480.webp 480w, /images/dattes-medjool-maroc-800.webp 800w" sizes="(min-width: 900px) 42vw, 100vw" width="800" height="1000" alt="{{img.hero.alt}}" fetchpriority="high" decoding="async">
         </figure>
       </div>
     </section>
 
     <!-- TRUST BAR -->
-    <section class="trust" aria-label="{{a11y.trust}}" data-i18n-attr="aria-label:a11y.trust">
+    <section class="trust" aria-label="{{a11y.trust}}">
       <ul class="container trust__list">
-        <li><span class="ico" aria-hidden="true">◆</span><span data-i18n="trust.1">{{trust.1}}</span></li>
-        <li><span class="ico" aria-hidden="true">◆</span><span data-i18n="trust.2">{{trust.2}}</span></li>
-        <li><span class="ico" aria-hidden="true">◆</span><span data-i18n="trust.3">{{trust.3}}</span></li>
-        <li><span class="ico" aria-hidden="true">◆</span><span data-i18n="trust.4">{{trust.4}}</span></li>
+        <li><span class="ico" aria-hidden="true">◆</span><span>{{trust.1}}</span></li>
+        <li><span class="ico" aria-hidden="true">◆</span><span>{{trust.2}}</span></li>
+        <li><span class="ico" aria-hidden="true">◆</span><span>{{trust.3}}</span></li>
+        <li><span class="ico" aria-hidden="true">◆</span><span>{{trust.4}}</span></li>
       </ul>
     </section>
 
@@ -120,17 +114,17 @@
     <section class="section" id="origine" aria-labelledby="about-title">
       <div class="container split">
         <figure class="split__media">
-          <img src="images/palmeraie-tafilalet-800.webp" srcset="images/palmeraie-tafilalet-480.webp 480w, images/palmeraie-tafilalet-800.webp 800w" sizes="(min-width: 900px) 40vw, 100vw" width="800" height="1000" alt="{{img.oasis.alt}}" data-i18n-attr="alt:img.oasis.alt" loading="lazy" decoding="async">
+          <img src="/images/palmeraie-tafilalet-800.webp" srcset="/images/palmeraie-tafilalet-480.webp 480w, /images/palmeraie-tafilalet-800.webp 800w" sizes="(min-width: 900px) 40vw, 100vw" width="800" height="1000" alt="{{img.oasis.alt}}" loading="lazy" decoding="async">
         </figure>
         <div>
-          <p class="kicker" data-i18n="about.kicker">{{about.kicker}}</p>
-          <h2 id="about-title" data-i18n="about.title">{{about.title}}</h2>
-          <p data-i18n="about.p1">{{about.p1}}</p>
-          <p data-i18n="about.p2">{{about.p2}}</p>
+          <p class="kicker">{{about.kicker}}</p>
+          <h2 id="about-title">{{about.title}}</h2>
+          <p>{{about.p1}}</p>
+          <p>{{about.p2}}</p>
           <div class="steps">
-            <div class="step"><span class="step__n">01</span><h3 data-i18n="about.h3a">{{about.h3a}}</h3><p data-i18n="about.pa">{{about.pa}}</p></div>
-            <div class="step"><span class="step__n">02</span><h3 data-i18n="about.h3b">{{about.h3b}}</h3><p data-i18n="about.pb">{{about.pb}}</p></div>
-            <div class="step"><span class="step__n">03</span><h3 data-i18n="about.h3c">{{about.h3c}}</h3><p data-i18n="about.pc">{{about.pc}}</p></div>
+            <div class="step"><span class="step__n">01</span><h3>{{about.h3a}}</h3><p>{{about.pa}}</p></div>
+            <div class="step"><span class="step__n">02</span><h3>{{about.h3b}}</h3><p>{{about.pb}}</p></div>
+            <div class="step"><span class="step__n">03</span><h3>{{about.h3c}}</h3><p>{{about.pc}}</p></div>
           </div>
         </div>
       </div>
@@ -140,32 +134,32 @@
     <section class="section section--cream" id="produits" aria-labelledby="products-title">
       <div class="container">
         <div class="section__head">
-          <p class="kicker" data-i18n="products.kicker">{{products.kicker}}</p>
-          <h2 id="products-title" data-i18n="products.title">{{products.title}}</h2>
-          <p class="lead" data-i18n="products.lead">{{products.lead}}</p>
+          <p class="kicker">{{products.kicker}}</p>
+          <h2 id="products-title">{{products.title}}</h2>
+          <p class="lead">{{products.lead}}</p>
         </div>
         <div class="products">
           <figure class="products__media">
-            <img src="images/dattes-mejhoul-800.webp" srcset="images/dattes-mejhoul-480.webp 480w, images/dattes-mejhoul-800.webp 800w" sizes="(min-width: 900px) 30vw, 100vw" width="800" height="1000" alt="{{img.products.alt}}" data-i18n-attr="alt:img.products.alt" loading="lazy" decoding="async">
+            <img src="/images/dattes-mejhoul-800.webp" srcset="/images/dattes-mejhoul-480.webp 480w, /images/dattes-mejhoul-800.webp 800w" sizes="(min-width: 900px) 30vw, 100vw" width="800" height="1000" alt="{{img.products.alt}}" loading="lazy" decoding="async">
           </figure>
           <div class="cards">
             <article class="card">
-              <h3 data-i18n="p1.title">{{p1.title}}</h3>
-              <p data-i18n="p1.text">{{p1.text}}</p>
-              <ul class="checks"><li data-i18n="p1.li1">{{p1.li1}}</li><li data-i18n="p1.li2">{{p1.li2}}</li></ul>
-              <a class="btn btn--gold btn--sm" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="product-premium"><span data-i18n="p1.cta">{{p1.cta}}</span></a>
+              <h3>{{p1.title}}</h3>
+              <p>{{p1.text}}</p>
+              <ul class="checks"><li>{{p1.li1}}</li><li>{{p1.li2}}</li></ul>
+              <a class="btn btn--gold btn--sm" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="product-premium"><span>{{p1.cta}}</span></a>
             </article>
             <article class="card card--featured">
-              <h3 data-i18n="p2.title">{{p2.title}}</h3>
-              <p data-i18n="p2.text">{{p2.text}}</p>
-              <ul class="checks"><li data-i18n="p2.li1">{{p2.li1}}</li><li data-i18n="p2.li2">{{p2.li2}}</li></ul>
-              <a class="btn btn--gold btn--sm" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="product-wholesale"><span data-i18n="p2.cta">{{p2.cta}}</span></a>
+              <h3>{{p2.title}}</h3>
+              <p>{{p2.text}}</p>
+              <ul class="checks"><li>{{p2.li1}}</li><li>{{p2.li2}}</li></ul>
+              <a class="btn btn--gold btn--sm" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="product-wholesale"><span>{{p2.cta}}</span></a>
             </article>
             <article class="card">
-              <h3 data-i18n="p3.title">{{p3.title}}</h3>
-              <p data-i18n="p3.text">{{p3.text}}</p>
-              <ul class="checks"><li data-i18n="p3.li1">{{p3.li1}}</li><li data-i18n="p3.li2">{{p3.li2}}</li></ul>
-              <a class="btn btn--gold btn--sm" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="product-boxes"><span data-i18n="p3.cta">{{p3.cta}}</span></a>
+              <h3>{{p3.title}}</h3>
+              <p>{{p3.text}}</p>
+              <ul class="checks"><li>{{p3.li1}}</li><li>{{p3.li2}}</li></ul>
+              <a class="btn btn--gold btn--sm" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="product-boxes"><span>{{p3.cta}}</span></a>
             </article>
           </div>
         </div>
@@ -176,16 +170,16 @@
     <section class="section" id="pourquoi" aria-labelledby="why-title">
       <div class="container">
         <div class="section__head">
-          <p class="kicker" data-i18n="why.kicker">{{why.kicker}}</p>
-          <h2 id="why-title" data-i18n="why.title">{{why.title}}</h2>
+          <p class="kicker">{{why.kicker}}</p>
+          <h2 id="why-title">{{why.title}}</h2>
         </div>
         <div class="features">
-          <div class="feature"><span class="feature__ico" aria-hidden="true">{{ICON_PALM}}</span><h3 data-i18n="why.1t">{{why.1t}}</h3><p data-i18n="why.1p">{{why.1p}}</p></div>
-          <div class="feature"><span class="feature__ico" aria-hidden="true">{{ICON_STAR}}</span><h3 data-i18n="why.2t">{{why.2t}}</h3><p data-i18n="why.2p">{{why.2p}}</p></div>
-          <div class="feature"><span class="feature__ico" aria-hidden="true">{{ICON_SCALE}}</span><h3 data-i18n="why.3t">{{why.3t}}</h3><p data-i18n="why.3p">{{why.3p}}</p></div>
-          <div class="feature"><span class="feature__ico" aria-hidden="true">{{ICON_CHAT}}</span><h3 data-i18n="why.4t">{{why.4t}}</h3><p data-i18n="why.4p">{{why.4p}}</p></div>
+          <div class="feature"><span class="feature__ico" aria-hidden="true">{{ICON_PALM}}</span><h3>{{why.1t}}</h3><p>{{why.1p}}</p></div>
+          <div class="feature"><span class="feature__ico" aria-hidden="true">{{ICON_STAR}}</span><h3>{{why.2t}}</h3><p>{{why.2p}}</p></div>
+          <div class="feature"><span class="feature__ico" aria-hidden="true">{{ICON_SCALE}}</span><h3>{{why.3t}}</h3><p>{{why.3p}}</p></div>
+          <div class="feature"><span class="feature__ico" aria-hidden="true">{{ICON_CHAT}}</span><h3>{{why.4t}}</h3><p>{{why.4p}}</p></div>
         </div>
-        <div class="center"><a class="btn btn--wa" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="why">{{ICON_WA}}<span data-i18n="why.cta">{{why.cta}}</span></a></div>
+        <div class="center"><a class="btn btn--wa" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="why">{{ICON_WA}}<span>{{why.cta}}</span></a></div>
       </div>
     </section>
 
@@ -193,21 +187,21 @@
     <section class="section section--dark" id="qualite" aria-labelledby="quality-title">
       <div class="container quality">
         <div>
-          <p class="kicker" data-i18n="quality.kicker">{{quality.kicker}}</p>
-          <h2 id="quality-title" data-i18n="quality.title">{{quality.title}}</h2>
-          <p class="lead" data-i18n="quality.lead">{{quality.lead}}</p>
+          <p class="kicker">{{quality.kicker}}</p>
+          <h2 id="quality-title">{{quality.title}}</h2>
+          <p class="lead">{{quality.lead}}</p>
           <ul class="checks checks--light">
-            <li data-i18n="quality.1">{{quality.1}}</li>
-            <li data-i18n="quality.2">{{quality.2}}</li>
-            <li data-i18n="quality.3">{{quality.3}}</li>
-            <li data-i18n="quality.4">{{quality.4}}</li>
+            <li>{{quality.1}}</li>
+            <li>{{quality.2}}</li>
+            <li>{{quality.3}}</li>
+            <li>{{quality.4}}</li>
           </ul>
         </div>
         <div class="quality__box">
           <!-- TODO (Jose) : ajoutez ici vos VRAIES certifications (ex. ONSSA, ISO, bio…) uniquement
                si vous les détenez, avec leurs logos/numéros. Rien n'est affiché pour l'instant. -->
-          <p data-i18n="quality.certs">{{quality.certs}}</p>
-          <a class="btn btn--wa" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="quality">{{ICON_WA}}<span data-i18n="quality.cta">{{quality.cta}}</span></a>
+          <p>{{quality.certs}}</p>
+          <a class="btn btn--wa" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="quality">{{ICON_WA}}<span>{{quality.cta}}</span></a>
         </div>
       </div>
     </section>
@@ -216,20 +210,20 @@
     <section class="section section--cream" id="avis" aria-labelledby="values-title">
       <div class="container">
         <div class="section__head">
-          <p class="kicker" data-i18n="values.kicker">{{values.kicker}}</p>
-          <h2 id="values-title" data-i18n="values.title">{{values.title}}</h2>
+          <p class="kicker">{{values.kicker}}</p>
+          <h2 id="values-title">{{values.title}}</h2>
         </div>
         <div class="values">
-          <div class="value"><span class="value__mark" aria-hidden="true">“</span><h3 data-i18n="values.1t">{{values.1t}}</h3><p data-i18n="values.1p">{{values.1p}}</p></div>
-          <div class="value"><span class="value__mark" aria-hidden="true">“</span><h3 data-i18n="values.2t">{{values.2t}}</h3><p data-i18n="values.2p">{{values.2p}}</p></div>
-          <div class="value"><span class="value__mark" aria-hidden="true">“</span><h3 data-i18n="values.3t">{{values.3t}}</h3><p data-i18n="values.3p">{{values.3p}}</p></div>
+          <div class="value"><span class="value__mark" aria-hidden="true">“</span><h3>{{values.1t}}</h3><p>{{values.1p}}</p></div>
+          <div class="value"><span class="value__mark" aria-hidden="true">“</span><h3>{{values.2t}}</h3><p>{{values.2p}}</p></div>
+          <div class="value"><span class="value__mark" aria-hidden="true">“</span><h3>{{values.3t}}</h3><p>{{values.3p}}</p></div>
         </div>
         <!-- TODO (Jose) : TÉMOIGNAGES CLIENTS — à ajouter seulement avec de vrais avis, avec l'accord des clients.
-             Modèle (ajoutez aussi les clés dans js/i18n.js pour FR / EN / ES) :
+             Modèle (ajoutez les clés dans tools/translations.json pour EN / FR / ES, puis python3 tools/build.py) :
         <div class="testimonials">
           <blockquote class="testimonial">
-            <p data-i18n="testi.1.quote">« Vrai avis client ici »</p>
-            <footer data-i18n="testi.1.author">Prénom, ville / entreprise</footer>
+            <p>« Vrai avis client ici »</p>
+            <footer>Prénom, ville / entreprise</footer>
           </blockquote>
         </div>
         -->
@@ -240,8 +234,8 @@
     <section class="section" id="faq" aria-labelledby="faq-title">
       <div class="container container--narrow">
         <div class="section__head">
-          <p class="kicker" data-i18n="faq.kicker">{{faq.kicker}}</p>
-          <h2 id="faq-title" data-i18n="faq.title">{{faq.title}}</h2>
+          <p class="kicker">{{faq.kicker}}</p>
+          <h2 id="faq-title">{{faq.title}}</h2>
         </div>
         <div class="faq">
 {{FAQ_ITEMS}}
@@ -252,15 +246,15 @@
     <!-- CTA FINAL -->
     <section class="final" id="contact" aria-labelledby="final-title">
       <picture>
-        <source media="(min-width: 800px)" srcset="images/dattes-medjool-en-gros-1400.webp">
-        <img class="final__bg" src="images/dattes-medjool-en-gros-800.webp" width="800" height="350" alt="" loading="lazy" decoding="async">
+        <source media="(min-width: 800px)" srcset="/images/dattes-medjool-en-gros-1400.webp">
+        <img class="final__bg" src="/images/dattes-medjool-en-gros-800.webp" width="800" height="350" alt="" loading="lazy" decoding="async">
       </picture>
       <div class="container final__inner">
-        <h2 id="final-title" data-i18n="final.title">{{final.title}}</h2>
-        <p data-i18n="final.text">{{final.text}}</p>
+        <h2 id="final-title">{{final.title}}</h2>
+        <p>{{final.text}}</p>
         <div class="cta-row cta-row--center">
-          <a class="btn btn--wa btn--lg" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="final">{{ICON_WA}}<span data-i18n="final.cta1">{{final.cta1}}</span></a>
-          <a class="btn btn--ghost-light btn--lg" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="final-quote"><span data-i18n="final.cta2">{{final.cta2}}</span></a>
+          <a class="btn btn--wa btn--lg" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="final">{{ICON_WA}}<span>{{final.cta1}}</span></a>
+          <a class="btn btn--ghost-light btn--lg" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="final-quote"><span>{{final.cta2}}</span></a>
         </div>
       </div>
     </section>
@@ -269,31 +263,30 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div>
-        <p class="brand brand--footer"><img src="favicon.svg" alt="" width="30" height="30" loading="lazy"><span>Dattes Medjool <strong>Maroc</strong></span></p>
-        <p data-i18n="footer.about">{{footer.about}}</p>
+        <p class="brand brand--footer"><img src="/favicon.svg" alt="" width="30" height="30" loading="lazy"><span>Dattes Medjool <strong>Maroc</strong></span></p>
+        <p>{{footer.about}}</p>
       </div>
       <div>
-        <h2 class="footer__h" data-i18n="footer.nav">{{footer.nav}}</h2>
+        <h2 class="footer__h">{{footer.nav}}</h2>
         <ul class="footer__links">
-          <li><a href="#origine" data-i18n="nav.about">{{nav.about}}</a></li>
-          <li><a href="#produits" data-i18n="nav.products">{{nav.products}}</a></li>
-          <li><a href="#qualite" data-i18n="nav.quality">{{nav.quality}}</a></li>
-          <li><a href="#faq" data-i18n="nav.faq">{{nav.faq}}</a></li>
+          <li><a href="#origine">{{nav.about}}</a></li>
+          <li><a href="#produits">{{nav.products}}</a></li>
+          <li><a href="#qualite">{{nav.quality}}</a></li>
+          <li><a href="#faq">{{nav.faq}}</a></li>
         </ul>
       </div>
       <div>
-        <h2 class="footer__h" data-i18n="footer.contact">{{footer.contact}}</h2>
-        <p><a href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="footer" data-i18n="footer.wa">{{footer.wa}}</a></p>
+        <h2 class="footer__h">{{footer.contact}}</h2>
+        <p><a href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="footer">{{footer.wa}}</a></p>
       </div>
     </div>
     <div class="container footer__bottom">
-      <p>© <span id="year">2026</span> Dattes Medjool Maroc. <span data-i18n="footer.rights">{{footer.rights}}</span></p>
+      <p>© <span id="year">2026</span> Dattes Medjool Maroc. <span>{{footer.rights}}</span></p>
     </div>
   </footer>
 
-  <a class="wa-float" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="floating" aria-label="{{a11y.wa}}" data-i18n-attr="aria-label:a11y.wa">{{ICON_WA}}</a>
+  <a class="wa-float" href="{{WA}}" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-location="floating" aria-label="{{a11y.wa}}">{{ICON_WA}}</a>
 
-  <script src="js/i18n.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

@@ -1,74 +1,7 @@
-/* Dattes Medjool Maroc — language switcher + small UI helpers. No framework, no tracking. */
+/* Dattes Medjool Maroc — small UI helpers. No framework, no tracking.
+   Each language is its own static page (/ = EN, /fr/, /es/); no runtime translation. */
 (function () {
   'use strict';
-  var T = window.I18N || {};
-  var LANGS = ['fr', 'en', 'es'];
-  var DEFAULT = 'fr';
-  var SITE = 'https://medjooldateswholesale.vercel.app/'; // provisional domain
-  var WA_BASE = 'https://wa.me/212661111111';
-  var STORE_KEY = 'dmm_lang';
-
-  function pickLang() {
-    var p = new URLSearchParams(location.search).get('lang');
-    if (p && LANGS.indexOf(p) > -1) return p;
-    try { var s = localStorage.getItem(STORE_KEY); if (s && LANGS.indexOf(s) > -1) return s; } catch (e) {}
-    return DEFAULT;
-  }
-
-  function faqSchema(lang) {
-    var d = T[lang], items = [];
-    for (var i = 1; i <= (window.I18N_FAQ_COUNT || 0); i++) {
-      items.push({ '@type': 'Question', name: d['faq.q' + i],
-        acceptedAnswer: { '@type': 'Answer', text: d['faq.a' + i] } });
-    }
-    return { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: items };
-  }
-
-  function apply(lang, updateUrl) {
-    var d = T[lang]; if (!d) return;
-    document.documentElement.lang = lang;
-
-    document.querySelectorAll('[data-i18n]').forEach(function (el) {
-      var v = d[el.getAttribute('data-i18n')]; if (v != null) el.textContent = v;
-    });
-    document.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
-      el.getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
-        var parts = pair.split(':'); var v = d[parts[1]];
-        if (parts[0] && v != null) el.setAttribute(parts[0].trim(), v);
-      });
-    });
-
-    // WhatsApp links: always https://wa.me/212661111111 + prefilled message in the current language
-    var href = WA_BASE + '?text=' + encodeURIComponent(d['wa.text']);
-    document.querySelectorAll('a[data-cta="whatsapp"]').forEach(function (a) { a.href = href; });
-
-    // FAQ structured data
-    var ld = document.getElementById('ld-faq');
-    if (ld) ld.textContent = JSON.stringify(faqSchema(lang));
-
-    // canonical + og:url follow the language version
-    var url = lang === DEFAULT ? SITE : SITE + '?lang=' + lang;
-    var c = document.getElementById('canonical'); if (c) c.href = url;
-    var og = document.getElementById('og-url'); if (og) og.content = url;
-
-    document.querySelectorAll('.lang button').forEach(function (b) {
-      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
-    });
-
-    try { localStorage.setItem(STORE_KEY, lang); } catch (e) {}
-    if (updateUrl && history.replaceState) {
-      var u = new URL(location.href);
-      if (lang === DEFAULT) u.searchParams.delete('lang'); else u.searchParams.set('lang', lang);
-      history.replaceState(null, '', u.pathname + u.search + u.hash);
-    }
-  }
-
-  var initial = pickLang();
-  if (initial !== DEFAULT) apply(initial, false); else apply(DEFAULT, false);
-
-  document.querySelectorAll('.lang button').forEach(function (b) {
-    b.addEventListener('click', function () { apply(b.getAttribute('data-lang'), true); });
-  });
 
   // Mobile menu
   var burger = document.querySelector('.burger');
