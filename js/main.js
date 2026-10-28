@@ -4,7 +4,7 @@
   var T = window.I18N || {};
   var LANGS = ['fr', 'en', 'es'];
   var DEFAULT = 'fr';
-  var SITE = 'https://dattesmedjoolmaroc.vercel.app/'; // provisional domain
+  var SITE = 'https://medjooldateswholesale.vercel.app/'; // provisional domain
   var WA_BASE = 'https://wa.me/212661111111';
   var STORE_KEY = 'dmm_lang';
 
