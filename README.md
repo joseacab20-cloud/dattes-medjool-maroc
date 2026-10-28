@@ -1,7 +1,7 @@
 # Dattes Medjool Maroc — site one-page FR / EN / ES
 
 Site vitrine d'une seule page, optimisé SEO pour **« dattes medjool maroc »** (FR, langue par défaut),
-**« moroccan medjool dates »** (EN) et **« dátiles medjool marruecos »** (ES).
+**« medjool dates wholesale »** (EN, marché US : wholesale / bulk medjool dates, medjool dates supplier) et **« dátiles medjool marruecos »** (ES).
 Objectif : faire contacter le vendeur sur **WhatsApp** (`https://wa.me/212661111111`).
 
 - 100 % statique : HTML + CSS + JavaScript, **aucun framework, aucune installation**.
@@ -97,7 +97,7 @@ Pensez à ajouter une bannière de consentement cookies avant d'activer un suivi
 
 ## 6. À savoir / à compléter
 
-- **Domaine provisoire** : `https://dattesmedjoolmaroc.vercel.app` (canonical, hreflang, sitemap, robots, Open Graph,
+- **Domaine prévu** : `https://medjooldateswholesale.vercel.app` (pas encore publié) (canonical, hreflang, sitemap, robots, Open Graph,
   JSON-LD). À remplacer partout si l'adresse finale est différente.
 - **Pas de témoignages inventés** : la section « Ce que nos clients recherchent » décrit des attentes générales.
   Un modèle de témoignage est prêt en commentaire dans `index.html` (TODO) — à n'utiliser qu'avec de vrais avis.
